@@ -5,7 +5,7 @@ const Testimony = ({ testimony }) => {
   return (
     <div className="border p-5 rounded">
       <div>
-        <p className='text-justify'>{comment}</p>
+        <p className='text-justify'>❝{comment}❞</p>
       </div>
       <div className="flex items-center mt-4">
         <div className='w-16 border-2 border-primary rounded-full'>

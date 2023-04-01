@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import banner from "../../../assets/images/chair.png";
+import PrimaryButton from "../../../button/PrimaryButton";
 
 const Banner = () => {
   return (
@@ -18,7 +19,7 @@ const Banner = () => {
             with specialized health science and auxiliary healthcare staff and
             medical equipment.
           </p>
-          <button className="btn bg-gradient-to-r from-primary to-secondary text-white border-0 animate-bounce"><Link to='/appointment'>Appointment</Link></button>
+          <PrimaryButton>Appointment</PrimaryButton>
         </div>
       </div>
     </div>

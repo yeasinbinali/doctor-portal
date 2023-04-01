@@ -1,5 +1,6 @@
 import React from "react";
 import teeth from "../../../assets/images/treatment.png";
+import PrimaryButton from "../../../button/PrimaryButton";
 
 const Dental = () => {
   return (
@@ -24,9 +25,7 @@ const Dental = () => {
             finest, atraumatic treatment possible which will eliminate their
             problems and satisfy their needs.
           </p>
-          <button className="btn bg-gradient-to-r from-primary to-secondary border-0 animate-bounce text-white">
-            Get Started
-          </button>
+          <PrimaryButton>Reviews</PrimaryButton>
         </div>
       </div>
     </div>

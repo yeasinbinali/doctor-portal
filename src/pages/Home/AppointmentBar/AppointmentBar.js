@@ -17,7 +17,7 @@ const AppointmentBar = () => {
             alt="doctor"
           />
           <div>
-            <h5 className="text-primary">Appointment</h5>
+            <h6 className="text-primary">Appointment</h6>
             <h1 className="text-3xl font-bold text-white py-5">Make an appointment Today</h1>
             <p className="text-white text-justify">
             Dedicated 24X7 call center to set appointments with your preferred doctor. Queries regarding doctors’ appointment schedule, earliest available doctors and other appointment related information are provided through the appointment desk.

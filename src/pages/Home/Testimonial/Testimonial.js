@@ -10,7 +10,7 @@ const Testimonial = () => {
       name: "Donald Kingston",
       country: "Chattogram",
       comment:
-        "A wonderful doctor in all aspects, professional, bedside manner, caring and gentle! Awesome experience. Dr. Wun is a very attentive and caring doctor. Gave very thorough care and he’s very knowledgeable.",
+        "A wonderful doctor in all aspects, professional, bedside manner, caring and gentle! Awesome experience. Dr. Wun is a very attentive and caring doctor. Gave very thorough care and he’s very knowledgeable and intelligent.",
       image: people,
     },
     {
@@ -31,7 +31,7 @@ const Testimonial = () => {
     },
   ];
   return (
-    <div>
+    <div className='md:p-3'>
       <div className='flex justify-between items-center'>
         <div className="text-center mt-10">
           <h5 className="text-primary">Testimonial</h5>

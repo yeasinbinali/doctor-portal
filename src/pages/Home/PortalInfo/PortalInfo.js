@@ -29,7 +29,7 @@ const PortalInfo = () => {
         }
     ]
     return (
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 lg:my-20 md:my-10'>
+        <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 lg:my-20 md:my-10 md:p-3'>
             {
                 infoes.map(info => <Info
                     info = {info}

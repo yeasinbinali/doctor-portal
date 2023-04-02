@@ -7,7 +7,8 @@ const AppointmentOptions = ({ availableAppointment, setTreatment }) => {
       <div className="card-body">
         <h2 className='text-2xl font-bold text-primary'>{name}</h2>
         {slots.length > 0 ? <p>{slots[0]}</p> : ''}
-        <label onClick={() => setTreatment(availableAppointment)} htmlFor="booking-modal" className="btn text-white border-0 my-2 bg-gradient-to-r from-primary to-secondary">Book Appointment</label>
+        <p>{slots.length} Spaces available</p>
+        <label onClick={() => setTreatment(availableAppointment)} htmlFor="booking-modal" className="btn text-white border-0 my-2 bg-gradient-to-r from-primary to-secondary w-3/4 mx-auto">Book Appointment</label>
       </div>
     </div>
   );

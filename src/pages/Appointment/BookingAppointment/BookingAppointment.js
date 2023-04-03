@@ -1,27 +1,27 @@
 import format from "date-fns/format";
 import React from "react";
 
-const AppointmentModal = ({ treatment, setTreatment, selected }) => {
+const BookingAppointment = ({ treatment, selected, setTreatment }) => {
   const { name, slots } = treatment;
   const date = format(selected, "PP");
 
-  const handleSlotForm = (event) => {
+  const handleBookingAppointment = event => {
     event.preventDefault();
     const form = event.target;
     const slot = form.slot.value;
     const fullName = form.name.value;
-    const phone = form.phone.value;
     const email = form.email.value;
+    const phone = form.phone.value;
 
     const bookingForm = {
       appointmentDate: date,
-      treatmentName: name,
       patientName: fullName,
+      treatment: name,
       slot,
-      phone,
-      email
+      email, 
+      phone
     }
-    
+
     setTreatment(null);
 
   }
@@ -38,15 +38,18 @@ const AppointmentModal = ({ treatment, setTreatment, selected }) => {
             ✕
           </label>
           <h3 className="text-lg font-bold">{name}</h3>
-          <form onSubmit={handleSlotForm} className="py-4">
+          <form onSubmit={handleBookingAppointment}>
             <input
               type="text"
-              name='selectedDate'
               placeholder={date}
+              name='date'
               className="input input-bordered w-full mb-2"
               readOnly
             />
-            <select name='slot' className="select select-bordered w-full mb-2">
+            <select 
+                name='slot'
+                className="select select-bordered w-full mb-2"
+            >
               {slots.map((slot, i) => <option
                 key = {i}
               >{slot}</option>)}
@@ -54,24 +57,24 @@ const AppointmentModal = ({ treatment, setTreatment, selected }) => {
             <input
               type="text"
               name='name'
-              placeholder="Full Name"
-              className="input input-bordered w-full mb-2"
-            />
-            <input
-              type="text"
-              name='phone'
-              placeholder="Phone Number"
+              placeholder="Your name"
               className="input input-bordered w-full mb-2"
             />
             <input
               type="text"
               name='email'
-              placeholder="Email"
+              placeholder="Email address"
               className="input input-bordered w-full mb-2"
             />
-            <button className="btn w-full bg-gradient-to-r from-primary to-secondary text-white border-0">
-              Submit
-            </button>
+            <input
+              type="text"
+              name='phone'
+              placeholder="Phone number"
+              className="input input-bordered w-full mb-2"
+            />
+            <button
+              className="btn w-full mb-2 bg-gradient-to-r from-primary to-secondary text-white border-0"
+            >Submit</button>
           </form>
         </div>
       </div>
@@ -79,4 +82,4 @@ const AppointmentModal = ({ treatment, setTreatment, selected }) => {
   );
 };
 
-export default AppointmentModal;
+export default BookingAppointment;

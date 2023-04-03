@@ -29,6 +29,7 @@ const AvailableAppointment = ({ selected }) => {
       </div>
       {treatment && (
         <AppointmentModal
+          setTreatment={setTreatment}
           treatment={treatment}
           selected={selected}
         ></AppointmentModal>

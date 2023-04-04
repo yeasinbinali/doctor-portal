@@ -1,4 +1,5 @@
 import React from "react";
+import { Typewriter } from 'react-simple-typewriter'
 import banner from "../../../assets/images/chair.png";
 import PrimaryButton from "../../../button/PrimaryButton";
 
@@ -12,7 +13,16 @@ const Banner = () => {
           alt="banner"
         />
         <div>
-          <h1 className="lg:text-5xl md:text-3xl text-3xl font-bold">Your new smile starts here</h1>
+          <h1 className="lg:text-4xl md:text-3xl text-2xl font-bold">
+            Services: {' '}
+            <Typewriter 
+              words={['Cosmetic Dentistry', 'Teeth Cleaning', 'Cavity Protection', 'Pediatric Dental', 'Oral Surgery']}
+              loop={5}
+              typeSpeed={70}
+              deleteSpeed={80}
+              delaySpeed={1000}
+            />
+          </h1>
           <p className="py-6 md:pr-5 text-justify">
             A doctors portal is a health care institution providing patient treatment
             with specialized health science and auxiliary healthcare staff and

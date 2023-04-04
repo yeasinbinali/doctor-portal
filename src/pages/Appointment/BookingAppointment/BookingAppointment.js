@@ -58,18 +58,21 @@ const BookingAppointment = ({ treatment, selected, setTreatment }) => {
               type="text"
               name='name'
               placeholder="Your name"
+              required
               className="input input-bordered w-full mb-2"
             />
             <input
               type="text"
               name='email'
               placeholder="Email address"
+              required
               className="input input-bordered w-full mb-2"
             />
             <input
               type="text"
               name='phone'
               placeholder="Phone number"
+              required
               className="input input-bordered w-full mb-2"
             />
             <button

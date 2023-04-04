@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="footer p-10 my-10" style={{backgroundImage: `url(${footer})`}}>
+    <footer className="footer p-10 mt-10" style={{backgroundImage: `url(${footer})`}}>
       <div>
         <p className='text-2xl font-bold text-secondary'>
           Doctors Portal

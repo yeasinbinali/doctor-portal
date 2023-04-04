@@ -13,8 +13,8 @@ const Banner = () => {
           alt="banner"
         />
         <div>
-          <h1 className="lg:text-4xl md:text-3xl text-2xl font-bold">
-            Services: {' '}
+          <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold">
+            _{' '}
             <Typewriter 
               words={['Cosmetic Dentistry', 'Teeth Cleaning', 'Cavity Protection', 'Pediatric Dental', 'Oral Surgery']}
               loop={5}

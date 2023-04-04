@@ -17,9 +17,9 @@ const Banner = () => {
             _{' '}
             <Typewriter 
               words={['Cosmetic Dentistry', 'Teeth Cleaning', 'Cavity Protection', 'Pediatric Dental', 'Oral Surgery']}
-              loop={5}
-              typeSpeed={70}
-              deleteSpeed={80}
+              loop={Infinity}
+              typeSpeed={150}
+              deleteSpeed={100}
               delaySpeed={1000}
             />
           </h1>

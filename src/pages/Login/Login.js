@@ -3,15 +3,15 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, formState: { errors }, handleSubmit } = useForm();
 
   const handleLogin = (data) => {
     console.log(data);
   }
   return (
-    <div className="container text-center">
+    <div className="container">
       <div className="w-96 mx-auto my-5 p-7">
-        <h2 className='text-xl'>Login</h2>
+        <h2 className='text-xl text-center'>Login</h2>
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control w-full mx-auto">
             <label className="label">
@@ -19,10 +19,11 @@ const Login = () => {
             </label>
             <input
               type="text"
-              {...register("email")}
+              {...register("email", {required: 'Email is required'})}
               placeholder="Email Address"
               className="input input-bordered w-full"
             />
+             {errors.email && <small className='text-red-600' role="alert">{errors.email?.message}</small>}
           </div>
           <div className="form-control w-full mx-auto">
             <label className="label">
@@ -30,10 +31,13 @@ const Login = () => {
             </label>
             <input
               type="password"
-              {...register("password")}
+              {...register("password", {required: 'Password is required',
+              minLength: {value: 6, message: 'Password must be 6 characters & longer'}
+            })}
               placeholder="Password"
               className="input input-bordered w-full"
             />
+            {errors.password && <small className='text-red-600' role="alert">{errors.password?.message}</small>}
             <label className="label">
               <span className="label-text">Forget Password?</span>
             </label>

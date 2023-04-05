@@ -31,7 +31,8 @@ const Login = () => {
             </label>
             <input
               type="password"
-              {...register("password", {required: 'Password is required',
+              {...register("password",
+              {required: 'Password is required',
               minLength: {value: 6, message: 'Password must be 6 characters & longer'}
             })}
               placeholder="Password"

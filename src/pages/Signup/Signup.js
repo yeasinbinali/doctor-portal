@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: {errors} } = useForm();
 
   const handleSignup = (data) => {
     console.log(data);
@@ -20,10 +20,13 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              {...register("Name")}
+              {...register("Name", {
+                required: 'Name is required'
+              })}
               placeholder="Your Name"
               className="input input-bordered w-full"
             />
+            {errors.name && <small className='text-red-600' role="alert">{errors.name?.message}</small>}
           </div>
           <div className="form-control w-full mx-auto">
             <label className="label">
@@ -31,10 +34,13 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              {...register("email")}
+              {...register("email", {
+                required: 'Email is required'
+              })}
               placeholder="Email Address"
               className="input input-bordered w-full"
             />
+            {errors.email && <small className='text-red-600' role="alert">{errors.email?.message}</small>}
           </div>
           <div className="form-control w-full mx-auto">
             <label className="label">
@@ -42,10 +48,14 @@ const Signup = () => {
             </label>
             <input
               type="password"
-              {...register("password")}
+              {...register("password", {
+                required: 'Password is required',
+                minLength: {value: 6, message: 'Must be 6 characters and longer'}
+              })}
               placeholder="Password"
               className="input input-bordered w-full"
             />
+            {errors.password && <small className='text-red-600' role="alert">{errors.password?.message}</small>}
             <label className="label">
               <span className="label-text">Forget Password?</span>
             </label>
@@ -53,7 +63,7 @@ const Signup = () => {
           <input className="btn btn-accent w-full text-white" type="submit" />
         </form>
         <p className="my-2">
-          New to Doctor Portal?{" "}
+          Already have an account? {" "}
           <Link className="text-secondary" to="/login">
             Login
           </Link>

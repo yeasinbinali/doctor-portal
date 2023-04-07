@@ -2,18 +2,23 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
   const {loginUser} = useContext(AuthContext);
   const [loginError, setLoginError] = useState('');
 
-  const handleLogin = (data) => {
+  const handleLogin = (data, event) => {
+    const form = event.target;
     console.log(data);
     loginUser(data.email, data.password)
     .then(result => {
       const user = result.user;
       console.log(user);
+      setLoginError('');
+      toast.success('Login successfully');
+      form.reset();
     })
     .catch(error => {
       const errorMessage = error.message;
@@ -56,6 +61,7 @@ const Login = () => {
             </label>
           </div>
           <input className='btn btn-accent w-full text-white' type="submit" />
+          {loginError && <p className='text-red-600 text-center'>{loginError}</p>}
         </form>
         <p className='my-2'>New to Doctor Portal? <Link className='text-secondary' to='/signup'>Create an account</Link></p>
         <div className="divider">OR</div>

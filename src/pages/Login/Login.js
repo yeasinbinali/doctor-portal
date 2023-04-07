@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
@@ -6,6 +6,7 @@ import { AuthContext } from "../../contexts/UserContext";
 const Login = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
   const {loginUser} = useContext(AuthContext);
+  const [loginError, setLoginError] = useState('');
 
   const handleLogin = (data) => {
     console.log(data);
@@ -15,7 +16,8 @@ const Login = () => {
       console.log(user);
     })
     .catch(error => {
-      console.error(error);
+      const errorMessage = error.message;
+      setLoginError(errorMessage);
     })
   }
   return (

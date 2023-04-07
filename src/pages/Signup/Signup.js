@@ -10,7 +10,7 @@ const Signup = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, signInWithGoogle } = useContext(AuthContext);
   const [signupError, setSignupError] = useState("");
   const navigate = useNavigate();
 
@@ -35,6 +35,16 @@ const Signup = () => {
         setSignupError(errorMessage);
       });
   };
+
+  const handleGoogle = () => {
+    signInWithGoogle()
+    .then(result => {
+      const user = result.user;
+      console.log(user);
+      navigate('/');
+    })
+    .catch(error => console.error(error));
+  }
 
   return (
     <div className="container text-center">
@@ -118,7 +128,7 @@ const Signup = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
+        <button onClick={handleGoogle} className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
       </div>
     </div>
   );

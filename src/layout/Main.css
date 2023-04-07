@@ -12,6 +12,14 @@
   border: 1px solid #fff;
 }
 
+#dark .appointmentName{
+  color: #333;
+}
+
+#dark select{
+  color: #333;
+}
+
 #dark span {
   color: #fff;
 }

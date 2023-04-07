@@ -39,7 +39,7 @@ const BookingAppointment = ({ treatment, selected, setTreatment }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">{name}</h3>
+          <h3 className="text-lg font-bold appointmentName">{name}</h3>
           <form onSubmit={handleBookingAppointment}>
             <input
               type="text"

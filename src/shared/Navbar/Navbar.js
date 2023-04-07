@@ -46,8 +46,10 @@ const Navbar = ({ theme, toggleTheme }) => {
           </li>
         </>
       )}
-        <small className='my-auto'>{theme === "light" ? "light" : "dark"}</small>
-        <input type="checkbox" onChange={toggleTheme} className="toggle my-auto" checked={theme === 'dark'} />
+        <div className='flex items-center ml-4'>
+          <small className='my-auto'>{theme === "light" ? "light" : "dark"}</small>
+          <input type="checkbox" onChange={toggleTheme} className="toggle my-auto" checked={theme === 'dark'} />
+        </div>
     </React.Fragment>
   );
   return (

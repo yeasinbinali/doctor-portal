@@ -1,0 +1,18 @@
+#light {
+  background-color: #fff;
+}
+
+#dark {
+  background-color: #333;
+  color: #fff;
+}
+
+#dark .google-btn {
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+#dark span {
+  color: #fff;
+}
+

@@ -103,7 +103,7 @@ const Login = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button onClick={handleGoogle} className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
+        <button onClick={handleGoogle} className="btn btn-outline w-full google-btn">CONTINUE WITH GOOGLE</button>
       </div>
     </div>
   );

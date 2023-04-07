@@ -40,9 +40,11 @@ const Login = () => {
     .then(result => {
       const user = result.user;
       navigate(from, {replace: true})
+      console.log(user);
     })
     .catch(error => console.error(error))
   }
+
   return (
     <div className="container">
       <div className="w-96 mx-auto my-5 p-7">

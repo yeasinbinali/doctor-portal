@@ -1,7 +1,9 @@
 import format from "date-fns/format";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../contexts/UserContext";
 
 const BookingAppointment = ({ treatment, selected, setTreatment }) => {
+  const {user} = useContext(AuthContext);
   const { name, slots } = treatment;
   const date = format(selected, "PP");
 
@@ -57,14 +59,14 @@ const BookingAppointment = ({ treatment, selected, setTreatment }) => {
             <input
               type="text"
               name='name'
-              placeholder="Your name"
+              placeholder='Your Name'
               required
               className="input input-bordered w-full mb-2"
             />
             <input
-              type="text"
+              type="email"
               name='email'
-              placeholder="Email address"
+              placeholder={user ? user?.email : 'Email Address'}
               required
               className="input input-bordered w-full mb-2"
             />

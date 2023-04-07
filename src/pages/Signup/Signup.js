@@ -21,7 +21,7 @@ const Signup = () => {
         const user = result.user;
         setSignupError("");
         const userInfo = {
-          displayName: data.Name
+          displayName: data.name
         };
         updateUser(userInfo)
           .then(() => {})
@@ -29,6 +29,7 @@ const Signup = () => {
         toast.success("User created successfully");
         form.reset();
         navigate('/');
+        console.log(user);
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -57,7 +58,7 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              {...register("Name", {
+              {...register("name", {
                 required: "Name is required",
               })}
               placeholder="Your Name"
@@ -112,9 +113,6 @@ const Signup = () => {
                 {errors.password?.message}
               </small>
             )}
-            <label className="label">
-              <span className="label-text">Forget Password?</span>
-            </label>
           </div>
           <input className="btn btn-accent w-full text-white" type="submit" />
           {signupError && (

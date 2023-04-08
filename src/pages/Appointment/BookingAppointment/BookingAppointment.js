@@ -1,9 +1,9 @@
 import format from "date-fns/format";
 import React, { useContext } from "react";
-import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/UserContext";
+import toast from 'react-hot-toast';
 
-const BookingAppointment = ({ treatment, selected, setTreatment }) => {
+const BookingAppointment = ({ treatment, selected, setTreatment, refetch }) => {
   const {user} = useContext(AuthContext);
   const { name, slots } = treatment;
   const date = format(selected, "PP");
@@ -37,8 +37,10 @@ const BookingAppointment = ({ treatment, selected, setTreatment }) => {
       if(data.acknowledged){
         setTreatment(null);
         toast.success('Booking confirmed');
+        refetch();
       }
     })
+
   }
 
   return (
@@ -72,7 +74,7 @@ const BookingAppointment = ({ treatment, selected, setTreatment }) => {
             <input
               type="text"
               name='name'
-              defaultValue={user && user?.displayName}
+              defaultValue={user?.displayName}
               disabled
               placeholder='Your Name / Please Login or signup'
               required
@@ -81,7 +83,7 @@ const BookingAppointment = ({ treatment, selected, setTreatment }) => {
             <input
               type="email"
               name='email'
-              defaultValue={user && user?.email}
+              defaultValue={user?.email}
               disabled
               placeholder='Email Address / Please Login or signup'
               required

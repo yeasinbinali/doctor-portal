@@ -5,20 +5,14 @@ import BookingAppointment from "../BookingAppointment/BookingAppointment";
 import SingleAppointment from "../SingleAppointment/SingleAppointment";
 
 const AvailableAppointment = ({ selected }) => {
-  // const [availableAppointments, setAvailableAppointments] = useState([]);
+  const date = format(selected, 'PP');
   const [treatment, setTreatment] = useState(null);
 
-  const {data: availableAppointments = []} = useQuery({
+  const {data: availableAppointments = [], refetch} = useQuery({
     queryKey: ['appointmentOptions'],
-    queryFn: () => fetch("http://localhost:5000/appointmentOptions")
+    queryFn: () => fetch(`http://localhost:5000/appointmentOptions?date=${date}`)
       .then((res) => res.json())
   })
-
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/appointmentOptions")
-  //     .then((res) => res.json())
-  //     .then((data) => setAvailableAppointments(data));
-  // }, []);
 
   return (
     <div>
@@ -39,6 +33,7 @@ const AvailableAppointment = ({ selected }) => {
           selected={selected}
           treatment={treatment}
           setTreatment={setTreatment}
+          refetch={refetch}
         ></BookingAppointment>
       )}
     </div>

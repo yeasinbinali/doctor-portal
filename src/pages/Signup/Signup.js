@@ -104,7 +104,7 @@ const Signup = () => {
               </small>
             )}
           </div>
-          <input className="btn btn-accent w-full text-white mt-4" type="submit" />
+          <input className="btn w-full text-white mt-4 create-btn" type="submit" />
           {signupError && (
             <p className="text-red-600 text-center">{signupError}</p>
           )}

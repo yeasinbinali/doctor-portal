@@ -32,9 +32,16 @@
 #dark span {
   color: #fff;
 }
+ 
+#dark .create-btn{
+  color: #fff;
+}
 
 @media screen and (max-width: 991px) {
   #dark .dropmenu{
+    background-color: black;
+  }
+  #light .logout-btn{
     background-color: #fff;
     color: #333;
   }

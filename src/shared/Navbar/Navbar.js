@@ -32,7 +32,7 @@ const Navbar = ({ theme, toggleTheme }) => {
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
-          <button onClick={handleLogout} className="btn btn-outline border-0">
+          <button onClick={handleLogout} className="btn btn-outline border-0 logout-btn">
             <Link>Logout</Link>
           </button>
         </>

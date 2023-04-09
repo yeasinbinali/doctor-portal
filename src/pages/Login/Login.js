@@ -91,7 +91,7 @@ const Login = () => {
               <span className="label-text">Forget Password?</span>
             </label>
           </div>
-          <input className="btn btn-accent w-full text-white" type="submit" />
+          <input className="btn btn-accent w-full text-white create-btn" type="submit" />
           {loginError && (
             <p className="text-red-600 text-center">{loginError}</p>
           )}

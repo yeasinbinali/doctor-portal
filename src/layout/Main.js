@@ -8,7 +8,7 @@ import { createContext, useState } from "react";
 export const ThemeContext = createContext(null);
 
 const Main = () => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
 
   const toggleTheme = () => {
     setTheme((current) => (current === "light" ? "dark" : "light"));

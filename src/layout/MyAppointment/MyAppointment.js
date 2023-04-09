@@ -3,37 +3,41 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/UserContext";
 
 const MyAppointment = () => {
-  const { user } = useContext(AuthContext);
-
+  const {user} = useContext(AuthContext);
+  
   const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
-  const { data: bookings = [] } = useQuery({
-    queryKey: ["bookings", user?.email],
-    queryFn: () => {
-      fetch(url).then((res) => res.json());
-    },
-  });
+  const {data: bookings = [] } = useQuery({
+    queryKey: ['bookings', user?.email],
+    queryFn: async() => {
+      const res = await fetch(url);
+      const data = await res.json();
+      return data;
+    }
+  })
 
   return (
-    <div className="mt-5">
-      <h1>My Appointment</h1>
+    <div>
+      <h1 className="my-5">My Appointment</h1>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
             <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Id</th>
+              <th>Email</th>
+              <th>Treatmet</th>
+              <th>time</th>
+              <th>Date</th>
             </tr>
           </thead>
           <tbody>
-            {bookings.map((booking, i) => 
-              <tr>
-                <th>{i}</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
+            {bookings.map((booking, i) =>
+              <tr key={booking._id}>
+                <th>{i+1}</th>
+                <td>{booking.email}</td>
+                <td>{booking.treatment}</td>
+                <td>{booking.slot}</td>
+                <td>{booking.appointmentDate}</td>
               </tr>
             )}
           </tbody>

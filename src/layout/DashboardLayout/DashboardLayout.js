@@ -2,6 +2,7 @@ import React, { createContext, useState } from "react";
 import { Outlet } from "react-router";
 import "./DashboardLayout.css";
 import Navbar from "../../shared/Navbar/Navbar";
+import Footer from "../../shared/Footer/Footer";
 
 export const ThemeContext = createContext(null);
 
@@ -40,6 +41,7 @@ const DashboardLayout = () => {
               </ul>
             </div>
           </div>
+          <Footer></Footer>
         </div>
       </div>
     </ThemeContext.Provider>

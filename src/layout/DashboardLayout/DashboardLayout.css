@@ -1,0 +1,25 @@
+#light {
+  background-color: #fff;
+  color: #333;
+}
+
+#dark {
+  background-color: #333;
+  color: #fff;
+}
+
+#dark #dash-drawer{
+    background-color: #333;
+    color: #fff;
+}
+
+#dark li{
+    color: #fff;
+}
+
+@media screen and (max-width: 991px) {
+    #light ul{
+        background-color: #333;
+        color: #fff;
+    }
+}

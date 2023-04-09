@@ -46,10 +46,17 @@ const Navbar = ({ theme, toggleTheme }) => {
           </li>
         </>
       )}
-        <div className='flex items-center ml-4'>
-          <small className='my-auto'>{theme === "light" ? "light" : "dark"}</small>
-          <input type="checkbox" onChange={toggleTheme} className="toggle my-auto" checked={theme === 'dark'} />
-        </div>
+      <div className="flex items-center ml-4">
+        <small className="my-auto">
+          {theme === "light" ? "light" : "dark"}
+        </small>
+        <input
+          type="checkbox"
+          onChange={toggleTheme}
+          className="toggle my-auto"
+          checked={theme === "dark"}
+        />
+      </div>
     </React.Fragment>
   );
   return (
@@ -73,7 +80,7 @@ const Navbar = ({ theme, toggleTheme }) => {
             </svg>
           </label>
           <ul
-            tabIndex={0}
+            tabIndex={1}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 dropmenu"
           >
             {menuItems}
@@ -85,6 +92,22 @@ const Navbar = ({ theme, toggleTheme }) => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{menuItems}</ul>
       </div>
+      <label tabIndex={2} htmlFor="dashboard-drawer" className="btn btn-ghost mr-0 lg:hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 6h16M4 12h8m-8 6h16"
+          />
+        </svg>
+      </label>
     </div>
   );
 };

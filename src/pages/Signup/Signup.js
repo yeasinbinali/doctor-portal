@@ -21,19 +21,37 @@ const Signup = () => {
         const user = result.user;
         setSignupError("");
         const userInfo = {
-          displayName: data.name
+          displayName: data.name,
         };
         updateUser(userInfo)
           .then(() => {})
-          .catch((err) => console.log(err));
-        toast.success("User created successfully");
+          .catch((err) => {
+            console.log(err);
+          });
         form.reset();
-        navigate('/');
         console.log(user);
+        saveUser();
       })
       .catch((error) => {
         const errorMessage = error.message;
         setSignupError(errorMessage);
+      });
+  };
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch(`http://localhost:5000/users`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("User created successfully");
+        navigate("/");
+        console.log(data);
       });
   };
 
@@ -104,7 +122,10 @@ const Signup = () => {
               </small>
             )}
           </div>
-          <input className="btn w-full text-white mt-4 create-btn" type="submit" />
+          <input
+            className="btn w-full text-white mt-4 create-btn"
+            type="submit"
+          />
           {signupError && (
             <p className="text-red-600 text-center">{signupError}</p>
           )}

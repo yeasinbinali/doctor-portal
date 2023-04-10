@@ -25,7 +25,7 @@ const MyAppointment = () => {
             <tr>
               <th>Id</th>
               <th>Email</th>
-              <th>Treatmet</th>
+              <th>Treatment</th>
               <th>time</th>
               <th>Date</th>
             </tr>

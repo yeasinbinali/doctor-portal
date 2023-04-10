@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import Dashboard from "../../Dashboard/Dashboard/Dashboard";
 import DashboardLayout from "../../layout/DashboardLayout/DashboardLayout";
 import Main from "../../layout/Main";
 import MyAppointment from "../../layout/MyAppointment/MyAppointment";

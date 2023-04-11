@@ -22,7 +22,7 @@ const MyAppointment = () => {
 
   return (
     <div>
-      <h1 className="my-5">My Appointment</h1>
+      <h1 className="my-5 text-2xl font-bold">My Appointment</h1>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>

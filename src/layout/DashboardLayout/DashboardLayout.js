@@ -3,6 +3,7 @@ import { Outlet } from "react-router";
 import "./DashboardLayout.css";
 import Navbar from "../../shared/Navbar/Navbar";
 import Footer from "../../shared/Footer/Footer";
+import { Link } from "react-router-dom";
 
 export const ThemeContext = createContext(null);
 
@@ -26,17 +27,17 @@ const DashboardLayout = () => {
             <div className="drawer-content">
               <Outlet></Outlet>
             </div>
-            <div className="drawer-side bg-base-200 mr-2">
+            <div className="drawer-side mr-2">
               <label
                 htmlFor="dashboard-drawer"
                 className="drawer-overlay"
               ></label>
               <ul className="menu p-4 w-80 text-base-content">
                 <li>
-                  <a>Sidebar Item 1</a>
+                  <Link to='/dashboard'>My Appointment</Link>
                 </li>
                 <li>
-                  <a>Sidebar Item 2</a>
+                  <Link to='/dashboard/allusers'>All Users</Link>
                 </li>
               </ul>
             </div>

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
 import toast from "react-hot-toast";
+import useToken from '../../hooks/useToken';
 
 const Signup = () => {
   const {
@@ -12,7 +13,15 @@ const Signup = () => {
   } = useForm();
   const { createUser, updateUser } = useContext(AuthContext);
   const [signupError, setSignupError] = useState("");
+  const [createUserEmail, setCreateUserEmail] = useState('');
+
+  const [token] = useToken(createUserEmail);
   const navigate = useNavigate();
+
+  if(token){
+    navigate('/');
+    toast.success('User create successfully');
+  }
 
   const handleSignup = (data, event) => {
     const form = event.target;
@@ -24,13 +33,13 @@ const Signup = () => {
           displayName: data.name,
         };
         updateUser(userInfo)
-          .then(() => {})
+          .then(() => {
+            form.reset();
+            saveUser(data.name, data.email);
+          })
           .catch((err) => {
             console.log(err);
           });
-        form.reset();
-        console.log(user);
-        saveUser();
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -49,9 +58,7 @@ const Signup = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("User created successfully");
-        navigate("/");
-        console.log(data);
+        setCreateUserEmail(email);
       });
   };
 

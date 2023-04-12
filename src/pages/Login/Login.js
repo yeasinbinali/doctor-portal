@@ -48,8 +48,8 @@ const Login = () => {
     signInWithGoogle()
     .then(result => {
       const user = result.user;
-      navigate(from, {replace: true})
       console.log(user);
+      navigate(from, {replace: true});
     })
     .catch(error => console.error(error))
   }

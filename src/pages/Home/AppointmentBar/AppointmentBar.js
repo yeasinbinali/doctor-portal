@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import appointment from "../../../assets/images/appointment.png";
 import doctor from "../../../assets/images/doctor.png";
 import PrimaryButton from "../../../button/PrimaryButton";
@@ -22,7 +23,7 @@ const AppointmentBar = () => {
             <p className="text-white text-justify">
             Dedicated 24X7 call center to set appointments with your preferred doctor. Queries regarding doctors’ appointment schedule, earliest available doctors and other appointment related information are provided through the appointment desk.
             </p>
-            <PrimaryButton>Appointment</PrimaryButton>
+            <PrimaryButton><Link to='/appointment'>Appointment</Link></PrimaryButton>
           </div>
         </div>
       </div>

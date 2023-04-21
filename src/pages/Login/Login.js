@@ -49,10 +49,25 @@ const Login = () => {
     .then(result => {
       const user = result.user;
       console.log(user);
-      navigate(from, {replace: true});
+      saveUser(user.displayName, user.email);
     })
     .catch(error => console.error(error))
   }
+
+  const saveUser = (name, email) => {
+    const user = { name, email };
+    fetch(`http://localhost:5000/users`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLoginUserEmail(email);
+      });
+  };
 
   return (
     <div className="container">

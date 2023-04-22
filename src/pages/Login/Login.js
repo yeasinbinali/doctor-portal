@@ -11,6 +11,7 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
   const { loginUser, signInWithGoogle } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
 

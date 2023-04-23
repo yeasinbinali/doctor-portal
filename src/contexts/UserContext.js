@@ -35,8 +35,12 @@ const UserContext = ({children}) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-            setLoading(false);
+            if(currentUser){
+                setUser(currentUser);
+                setLoading(false);
+            }else{
+                setUser(null);
+            }
         })
         return () => unsubscribe();
     }, [])

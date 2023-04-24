@@ -132,9 +132,9 @@ const AddDoctor = () => {
             })}
             className="input input-bordered w-full"
           />
-          {errors.name && (
+          {errors.image && (
             <small className="text-red-600" role="alert">
-              {errors.name?.message}
+              {errors.image?.message}
             </small>
           )}
         </div>

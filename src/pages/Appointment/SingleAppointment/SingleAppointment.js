@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
+import { Link } from "react-router-dom";
+import {AuthContext} from '../../../contexts/UserContext';
 
 const SingleAppointment = ({ availableAppointment, setTreatment }) => {
   const { name, slots } = availableAppointment;
+  const {user} = useContext(AuthContext);
+
   return (
     <div className="card border-2">
       <div className="card-body">
@@ -16,7 +20,9 @@ const SingleAppointment = ({ availableAppointment, setTreatment }) => {
             <p>{slots.length} space available</p>
           )}
         </div>
-        <div className="card-actions justify-center">
+        {
+          user && user?.uid ?
+          <div className="card-actions justify-center">
           <label
             htmlFor="booking-modal"
             onClick={() => setTreatment(availableAppointment)}
@@ -25,6 +31,11 @@ const SingleAppointment = ({ availableAppointment, setTreatment }) => {
             Book Appointment
           </label>
         </div>
+        : 
+        <div className="card-actions justify-center">
+          <button className='btn bg-gradient-to-r from-primary to-secondary text-white border-0'><Link to='/login'>Book Appointment</Link></button>
+        </div>
+        }
       </div>
     </div>
   );

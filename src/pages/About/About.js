@@ -34,7 +34,7 @@ const About = () => {
       </div>
       {/* doctors */}
       <div className="p-5">
-        <h2 className="text-3xl font-bold my-5 text-primary">
+        <h2 className="text-3xl font-bold my-5 text-primary text-center">
           Our Specialists
         </h2>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5">

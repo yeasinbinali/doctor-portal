@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
-import people from "../../../assets/images/people1.png";
+import people1 from "../../../assets/images/people1.png";
+import people2 from "../../../assets/images/people2.png";
+import people3 from "../../../assets/images/people3.png";
 import Testimony from "./Testimony/Testimony";
 import quote from "../../../assets/icons/quote.svg";
 import PrimaryButton from "../../../button/PrimaryButton";
@@ -11,27 +13,27 @@ const Testimonial = () => {
   const testimonies = [
     {
       id: 1,
-      name: "Donald Kingston",
-      country: "Chattogram",
+      name: "Donald Mul",
+      country: "Toronto",
       comment:
         "A wonderful doctor in all aspects, professional, bedside manner, caring and gentle! Awesome experience. Dr. Wun is a very attentive and caring doctor. Gave very thorough care and he’s very knowledgeable and intelligent.",
-      image: people,
+      image: people1,
     },
     {
       id: 2,
-      name: "Hasim Amla",
-      country: "Sylhet",
+      name: "Yuhi Senorita",
+      country: "London",
       comment:
         "I met with Dr. Lisa Ann Newman first time. She explained everything in details, make me feel so comfortable to be her patient. Dr. Lisa Newman and her staff are wonderful. Prompt, compassionate and expert!",
-      image: people,
+      image: people2,
     },
     {
       id: 3,
-      name: "Cerry Anderson",
-      country: "Banani",
+      name: "Marie Annie",
+      country: "Jakarta",
       comment:
         "Dr Swistel is a very compassionate, and caring professional. He explained the issues that were relevant to me in an easy manner. I felt that he would do what was needed to treat me and find a good solution.",
-      image: people,
+      image: people3,
     },
   ];
   return (

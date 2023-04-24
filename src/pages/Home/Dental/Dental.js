@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import teeth from "../../../assets/images/treatment.png";
 import PrimaryButton from "../../../button/PrimaryButton";
 
@@ -25,7 +26,7 @@ const Dental = () => {
             finest, atraumatic treatment possible which will eliminate their
             problems and satisfy their needs.
           </p>
-          <PrimaryButton>Reviews</PrimaryButton>
+          <PrimaryButton><Link to='/reviews'>Reviews</Link></PrimaryButton>
         </div>
       </div>
     </div>

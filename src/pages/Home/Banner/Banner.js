@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Typewriter } from 'react-simple-typewriter'
 import banner from "../../../assets/images/chair.png";
 import PrimaryButton from "../../../button/PrimaryButton";
@@ -28,7 +29,7 @@ const Banner = () => {
             with specialized health science and auxiliary healthcare staff and
             medical equipment.
           </p>
-          <PrimaryButton>Appointment</PrimaryButton>
+          <PrimaryButton><Link to='/appointment'>Appointment</Link></PrimaryButton>
         </div>
       </div>
     </div>

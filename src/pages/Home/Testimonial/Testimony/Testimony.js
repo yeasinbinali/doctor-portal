@@ -8,8 +8,8 @@ const Testimony = ({ testimony }) => {
         <p className='text-justify'>❝{comment}❞</p>
       </div>
       <div className="flex items-center mt-4">
-        <div className='w-16 border-2 border-primary rounded-full'>
-          <img className='p-0.5' src={image} alt="" />
+        <div className='w-10 border-2 border-primary rounded-full'>
+          <img className='p-0.5 w-10 h-10 rounded-full' src={image} alt="" />
         </div>
         <div className='ml-3'>
           <h5>{name}</h5>

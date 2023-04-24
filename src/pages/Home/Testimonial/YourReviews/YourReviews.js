@@ -10,42 +10,40 @@ const YourReviews = () => {
   } = useForm();
 
   const imageHostKey = process.env.REACT_APP_imgbb_key;
-  console.log(imageHostKey);
 
-  const handleReview = (data) => {
-    const image = (data.image[0]);
+  const handleReview = (data, event) => {
+    const form = event.target;
+    const image = data.image[0]
     const formData = new FormData();
     formData.append('image', image);
-    const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`;
-
-    fetch(url, {
+    fetch(`https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`, {
       method: 'POST',
       body: formData
     })
     .then(res => res.json())
     .then(imgData => {
       if(imgData.success){
-        const review = {
-          name: data.name,
-          address: data.address,
-          image: imgData.data.url,
-          message: data.message
-        }
-
-        fetch('http://localhost:5000/reviews', {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json', 
-            authorization: `bearer ${localStorage.getItem('accessToken')}`
-          },
-          body: JSON.stringify(review)
-        })
-        .then(res => res.json())
-        .then(reviewData => {
-          if(reviewData.acknowledged){
-            toast.success(`Thanks ${data.name}, for giving your review`)
-          }
-        })
+       const review = {
+         name: data.name,
+         address: data.address,
+         image: imgData.data.url,
+         message: data.message
+       }
+       fetch('http://localhost:5000/reviews', {
+         method: 'POST',
+         headers: {
+           'content-type': 'application/json',
+           authorization: `bearer ${localStorage.getItem('accessToken')}`
+         },
+         body: JSON.stringify(review)
+       })
+       .then(res => res.json())
+       .then(reviewData => {
+         if(reviewData.acknowledged){
+           toast.success(`Thanks ${data.name} for giving your review!`);
+           form.reset();
+         }
+       })
       }
     })
   }
@@ -63,6 +61,7 @@ const YourReviews = () => {
               type="text"
               {...register("name", {
                 required: "Name is required",
+                maxLength: 20
               })}
               placeholder="Enter your name"
               className="input input-bordered w-full"
@@ -116,7 +115,7 @@ const YourReviews = () => {
             <textarea
               type="text"
               {...register("message", {
-                required: "message is required",
+                required: "message is required"
               })}
               placeholder="Your message"
               className="textarea textarea-bordered w-full textarea-lg"

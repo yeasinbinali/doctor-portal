@@ -3,8 +3,19 @@ import people1 from "../../assets/images/people1.png";
 import people2 from "../../assets/images/people2.png";
 import people3 from "../../assets/images/people3.png";
 import Testimony from "../Home/Testimonial/Testimony/Testimony";
+import { useQuery } from "@tanstack/react-query";
+import Review from "./Review/Review";
 
 const Reviews = () => {
+  const { data: reviews } = useQuery({
+    queryKey: ["reviews"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/reviews");
+      const data = await res.json();
+      return data;
+    },
+  });
+
   const testimonies = [
     {
       id: 1,
@@ -32,11 +43,14 @@ const Reviews = () => {
     },
   ];
   return (
-    <div className='p-5'>
+    <div className="p-5">
       <h2 className="text-3xl text-primary font-bold my-5">All Reviews</h2>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mt-7">
         {testimonies.map((testimony) => (
           <Testimony key={testimony.id} testimony={testimony}></Testimony>
+        ))}
+        {reviews?.map((review) => (
+          <Review key={review._id} review={review}></Review>
         ))}
       </div>
     </div>

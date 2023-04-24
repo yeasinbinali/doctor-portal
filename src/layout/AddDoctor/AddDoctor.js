@@ -58,9 +58,8 @@ const AddDoctor = () => {
           }
         });
       }
-      form.reset();
     })
-    doctor.reset();
+    form.reset();
   };
 
   if (isLoading) {

@@ -27,7 +27,7 @@ const Signup = () => {
     const form = event.target;
     createUser(data.email, data.password)
       .then((result) => {
-        const user = result.user;
+        // const user = result.user;
         setSignupError("");
         const userInfo = {
           displayName: data.name,

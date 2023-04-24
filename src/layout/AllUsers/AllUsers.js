@@ -12,7 +12,7 @@ const AllUsers = () => {
   });
 
   return (
-    <div>
+    <div className='p-5'>
       <h2 className="text-2xl font-bold my-5 text-primary">All User</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">

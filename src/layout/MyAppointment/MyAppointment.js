@@ -22,7 +22,7 @@ const MyAppointment = () => {
   })
 
   return (
-    <div>
+    <div className='p-5'>
       <h1 className="my-5 text-2xl font-bold text-primary">My Appointment</h1>
       <div className="overflow-x-auto">
         <table className="table w-full">

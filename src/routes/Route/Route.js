@@ -7,6 +7,7 @@ import MyAppointment from "../../layout/MyAppointment/MyAppointment";
 import About from "../../pages/About/About";
 import Appointment from "../../pages/Appointment/Appointment/Appointment";
 import Home from "../../pages/Home/Home/Home";
+import YourReviews from "../../pages/Home/Testimonial/YourReviews/YourReviews";
 import Login from "../../pages/Login/Login";
 import Reviews from "../../pages/Reviews/Reviews";
 import Signup from "../../pages/Signup/Signup";
@@ -40,8 +41,12 @@ export const router = createBrowserRouter([
             {
                 path: '/login', 
                 element: <Login></Login>
+            },
+            {
+                path: '/yourReview',
+                element: <PrivateRoute><YourReviews></YourReviews></PrivateRoute>
             }
-        ],
+        ]
     },
     {
         path: '/dashboard',

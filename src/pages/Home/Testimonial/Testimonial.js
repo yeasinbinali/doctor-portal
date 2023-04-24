@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import people from "../../../assets/images/people1.png";
 import Testimony from "./Testimony/Testimony";
 import quote from "../../../assets/icons/quote.svg";
+import PrimaryButton from "../../../button/PrimaryButton";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/UserContext";
 
 const Testimonial = () => {
+  const {user} = useContext(AuthContext);
   const testimonies = [
     {
       id: 1,
@@ -31,7 +35,7 @@ const Testimonial = () => {
     },
   ];
   return (
-    <div className='md:p-3'>
+    <div className='md:p-3 mb-10'>
       <div className='flex justify-between items-center'>
         <div className="text-center mt-10">
           <h5 className="text-primary">Testimonial</h5>
@@ -41,10 +45,18 @@ const Testimonial = () => {
           <img className='w-20' src={quote} alt="" />
         </div>
       </div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mt-7 mb-20">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mt-7">
         {testimonies.map((testimony) => (
           <Testimony key={testimony.id} testimony={testimony}></Testimony>
         ))}
+      </div>
+      <div className='text-center'>
+        {
+          user && user.uid ?
+          <PrimaryButton><Link to='/yourReview'>Your Reviews</Link></PrimaryButton>
+          : 
+          <PrimaryButton><Link to='/login'>Your Reviews</Link></PrimaryButton>
+        }
       </div>
     </div>
   );

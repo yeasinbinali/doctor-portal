@@ -9,6 +9,7 @@ import Appointment from "../../pages/Appointment/Appointment/Appointment";
 import Home from "../../pages/Home/Home/Home";
 import YourReviews from "../../pages/Home/Testimonial/YourReviews/YourReviews";
 import Login from "../../pages/Login/Login";
+import Payment from "../../pages/Payment/Payment";
 import Reviews from "../../pages/Reviews/Reviews";
 import Signup from "../../pages/Signup/Signup";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -63,6 +64,11 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/adddoctor',
                 element: <AddDoctor></AddDoctor>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>,
+                loader: ({params}) => fetch(`http://localhost:5000/bookings/${params.id}`)
             }
         ]
     },

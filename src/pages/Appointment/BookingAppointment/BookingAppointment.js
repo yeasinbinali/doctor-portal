@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 const BookingAppointment = ({ treatment, selected, setTreatment, refetch }) => {
   const {user} = useContext(AuthContext);
-  const { name, slots } = treatment;
+  const { name, slots, price } = treatment;
   const date = format(selected, "PP");
 
   const handleBookingAppointment = event => {
@@ -22,7 +22,8 @@ const BookingAppointment = ({ treatment, selected, setTreatment, refetch }) => {
       treatment: name,
       slot,
       email, 
-      phone
+      phone,
+      price
     }
 
     fetch('http://localhost:5000/bookings', {
@@ -93,7 +94,7 @@ const BookingAppointment = ({ treatment, selected, setTreatment, refetch }) => {
               className="input input-bordered w-full mb-2"
             />
             <input
-              type="text"
+              type="number"
               name='phone'
               placeholder="Phone number"
               required

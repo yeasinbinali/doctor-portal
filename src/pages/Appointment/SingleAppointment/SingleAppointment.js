@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {AuthContext} from '../../../contexts/UserContext';
 
 const SingleAppointment = ({ availableAppointment, setTreatment }) => {
-  const { name, slots } = availableAppointment;
+  const { name, slots, price } = availableAppointment;
   const {user} = useContext(AuthContext);
 
   return (
@@ -19,6 +19,7 @@ const SingleAppointment = ({ availableAppointment, setTreatment }) => {
           ) : (
             <p>{slots.length} space available</p>
           )}
+          <p className='my-1'>Fee: ${price}</p>
         </div>
         {
           user && user?.uid ?

@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import AddDoctor from "../../layout/AddDoctor/AddDoctor";
 import DashboardLayout from "../../layout/DashboardLayout/DashboardLayout";
 import Main from "../../layout/Main";
 import About from "../../pages/About/About";

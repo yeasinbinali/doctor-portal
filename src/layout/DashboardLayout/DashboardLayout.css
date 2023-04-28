@@ -12,6 +12,14 @@
     color: #333;
 }
 
+#dark h2{
+  color: #fff;
+}
+
+#dark small{
+  color: #fff;
+}
+
 #dark li{
     color: #fff;
 }

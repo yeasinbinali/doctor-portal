@@ -28,6 +28,7 @@ const CheckoutForm = ({ booking }) => {
   }, [price]);
 
   const handleSubmit = async (event) => {
+    const form = event.target.value;
     event.preventDefault();
 
     if (!stripe || !elements) {
@@ -92,6 +93,7 @@ const CheckoutForm = ({ booking }) => {
         if(data.insertedId){
           setSuccess("Congrats! You paid the money.");
           setTransactionId(paymentIntent.id);
+          form.reset();
         }
       })
     }
@@ -131,7 +133,7 @@ const CheckoutForm = ({ booking }) => {
       {success && (
         <div className='w-full'>
           <p className="text-green-600">{success}</p>
-          <p className='font-bold'>Your transactionId: {transactionId}</p>
+          <small className='font-bold'>Your transactionId: {transactionId}</small>
         </div>
       )}
     </>

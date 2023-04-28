@@ -3,7 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-const AddDoctor = () => {
+const AddDoctorContainer = () => {
   const {
     register,
     handleSubmit,
@@ -147,4 +147,4 @@ const AddDoctor = () => {
   );
 };
 
-export default AddDoctor;
+export default AddDoctorContainer;

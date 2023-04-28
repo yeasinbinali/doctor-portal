@@ -49,7 +49,7 @@ const YourReviews = () => {
   }
 
   return (
-    <div className="bg-base-200">
+    <div>
       <div className="text-center p-3">
         <h2 className="text-primary text-3xl my-3">Your Reviews</h2>
         <form onSubmit={handleSubmit(handleReview)}>

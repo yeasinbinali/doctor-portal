@@ -1,23 +1,26 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddDoctor from "../../layout/AddDoctor/AddDoctor";
-import AllUsers from "../../layout/AllUsers/AllUsers";
 import DashboardLayout from "../../layout/DashboardLayout/DashboardLayout";
 import Main from "../../layout/Main";
-import MyAppointment from "../../layout/MyAppointment/MyAppointment";
 import About from "../../pages/About/About";
+import AddDoctorContainer from "../../pages/AddDoctorContainer/AddDoctorContainer";
+import AllUsersContainer from "../../pages/AllUserContainer/AllUserContainer";
 import Appointment from "../../pages/Appointment/Appointment/Appointment";
 import Home from "../../pages/Home/Home/Home";
 import YourReviews from "../../pages/Home/Testimonial/YourReviews/YourReviews";
 import Login from "../../pages/Login/Login";
+import MyAppointmentPage from "../../pages/MyAppointmentPage/MyAppointmentPage";
 import Payment from "../../pages/Payment/Payment";
 import Reviews from "../../pages/Reviews/Reviews";
 import Signup from "../../pages/Signup/Signup";
+import DisplayError from "../../shared/DisplayError/DisplayError";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/',
@@ -52,18 +55,19 @@ export const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard',
-                element: <MyAppointment></MyAppointment>
+                element: <MyAppointmentPage></MyAppointmentPage>
             },
             {
                 path: '/dashboard/allusers',
-                element: <AllUsers></AllUsers>
+                element: <AllUsersContainer></AllUsersContainer>
             },
             {
                 path: '/dashboard/adddoctor',
-                element: <AddDoctor></AddDoctor>
+                element: <AddDoctorContainer></AddDoctorContainer>
             },
             {
                 path: '/dashboard/payment/:id',

@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
 
-const MyAppointment = () => {
+const MyAppointmentPage = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
 
@@ -34,7 +34,7 @@ const MyAppointment = () => {
               <th>Treatment</th>
               <th>time</th>
               <th>Date</th>
-              <th>Fee</th>
+              <th>Payment</th>
             </tr>
           </thead>
           <tbody>
@@ -53,7 +53,7 @@ const MyAppointment = () => {
                       </button></Link>
                     }
                     {
-                      booking.paid && <span className='text-primary'>Paid</span>
+                      booking.price && booking.paid && <span className='text-green-600'>Paid</span>
                     }
                   </td>
                 </tr>
@@ -65,4 +65,4 @@ const MyAppointment = () => {
   );
 };
 
-export default MyAppointment;
+export default MyAppointmentPage;

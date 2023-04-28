@@ -1,7 +1,9 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 
 const CheckoutForm = ({ booking }) => {
+  const navigate = useNavigate();
   console.log(booking);
   const { price, patientName, email, _id } = booking;
 
@@ -28,7 +30,6 @@ const CheckoutForm = ({ booking }) => {
   }, [price]);
 
   const handleSubmit = async (event) => {
-    const form = event.target.value;
     event.preventDefault();
 
     if (!stripe || !elements) {
@@ -93,7 +94,7 @@ const CheckoutForm = ({ booking }) => {
         if(data.insertedId){
           setSuccess("Congrats! You paid the money.");
           setTransactionId(paymentIntent.id);
-          form.reset();
+          navigate("/dashboard");
         }
       })
     }

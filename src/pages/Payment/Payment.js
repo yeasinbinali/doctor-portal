@@ -15,6 +15,10 @@ const Payment = () => {
   return (
     <div className="w-full mx-auto p-5">
       <div className='border-2 p-5 rounded'>
+        <h2>Card Number: 4242 4242 4242 4242</h2>
+        <h2>Date: Any Future Date</h2>
+        <h2>CVC: Any 3digits</h2>
+        <h2>ZIP: Any 5digits</h2>
         <h2 className="text-2xl font-bold">
           Payment for <strong className="text-primary">{treatment}</strong>
         </h2>

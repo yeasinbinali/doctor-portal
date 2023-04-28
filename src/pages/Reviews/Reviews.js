@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import people1 from "../../assets/images/people1.png";
 import people2 from "../../assets/images/people2.png";
 import people3 from "../../assets/images/people3.png";
 import Testimony from "../Home/Testimonial/Testimony/Testimony";
 import { useQuery } from "@tanstack/react-query";
 import Review from "./Review/Review";
+import { Link } from "react-router-dom";
+import PrimaryButton from "../../button/PrimaryButton";
+import { AuthContext } from "../../contexts/UserContext";
 
 const Reviews = () => {
+  const {user} = useContext(AuthContext);
   const { data: reviews } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
@@ -52,6 +56,14 @@ const Reviews = () => {
         {reviews?.map((review) => (
           <Review key={review._id} review={review}></Review>
         ))}
+      </div>
+      <div className='text-center'>
+        {
+          user && user.uid ?
+          <PrimaryButton><Link to='/yourReview'>Your Reviews</Link></PrimaryButton>
+          : 
+          <PrimaryButton><Link to='/login'>Your Reviews</Link></PrimaryButton>
+        }
       </div>
     </div>
   );

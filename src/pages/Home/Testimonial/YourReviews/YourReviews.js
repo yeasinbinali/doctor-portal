@@ -51,7 +51,7 @@ const YourReviews = () => {
   return (
     <div>
       <div className="text-center p-3">
-        <h2 className="text-primary text-3xl my-3">Your Reviews</h2>
+        <h2 className="text-primary text-3xl my-3 font-bold">Your Reviews</h2>
         <form onSubmit={handleSubmit(handleReview)}>
           <div className="form-control md:w-1/2 mx-auto">
             <label className="label">

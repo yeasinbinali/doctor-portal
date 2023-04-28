@@ -2,8 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 const AddDoctorContainer = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -55,6 +57,7 @@ const AddDoctorContainer = () => {
         .then(result => {
           if(result.acknowledged){
             toast.success(`Doctor ${data.name} successfully added`);
+            navigate('/about');
           }
         });
       }

@@ -1,14 +1,14 @@
 import format from "date-fns/format";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../contexts/UserContext";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 const BookingAppointment = ({ treatment, selected, setTreatment, refetch }) => {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { name, slots, price } = treatment;
   const date = format(selected, "PP");
 
-  const handleBookingAppointment = event => {
+  const handleBookingAppointment = (event) => {
     event.preventDefault();
     const form = event.target;
     const slot = form.slot.value;
@@ -21,31 +21,30 @@ const BookingAppointment = ({ treatment, selected, setTreatment, refetch }) => {
       patientName: fullName,
       treatment: name,
       slot,
-      email, 
+      email,
       phone,
-      price
-    }
+      price,
+    };
 
-    fetch('http://localhost:5000/bookings', {
-      method: 'POST',
+    fetch("https://doctor-portal-server-gamma-five.vercel.app/bookings", {
+      method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(bookingForm)
+      body: JSON.stringify(bookingForm),
     })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      if(data.acknowledged){
-        setTreatment(null);
-        toast.success('Booking confirmed');
-        refetch();
-      }else{
-        toast.error(data.message);
-      }
-    })
-
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          setTreatment(null);
+          toast.success("Booking confirmed");
+          refetch();
+        } else {
+          toast.error(data.message);
+        }
+      });
+  };
 
   return (
     <div>
@@ -63,46 +62,43 @@ const BookingAppointment = ({ treatment, selected, setTreatment, refetch }) => {
             <input
               type="text"
               placeholder={date}
-              name='date'
+              name="date"
               className="input input-bordered w-full mb-2"
               readOnly
             />
-            <select 
-                name='slot'
-                className="select select-bordered w-full mb-2"
-            >
-              {slots.map((slot, i) => <option
-                key = {i}
-              >{slot}</option>)}
+            <select name="slot" className="select select-bordered w-full mb-2">
+              {slots.map((slot, i) => (
+                <option key={i}>{slot}</option>
+              ))}
             </select>
             <input
               type="text"
-              name='name'
+              name="name"
               defaultValue={user?.displayName}
               disabled
-              placeholder='Your Name / Please Login or signup'
+              placeholder="Your Name / Please Login or signup"
               required
               className="input input-bordered w-full mb-2"
             />
             <input
               type="email"
-              name='email'
+              name="email"
               defaultValue={user?.email}
               disabled
-              placeholder='Email Address / Please Login or signup'
+              placeholder="Email Address / Please Login or signup"
               required
               className="input input-bordered w-full mb-2"
             />
             <input
               type="number"
-              name='phone'
+              name="phone"
               placeholder="Phone number"
               required
               className="input input-bordered w-full mb-2"
             />
-            <button
-              className="btn w-full mb-2 bg-gradient-to-r from-primary to-secondary text-white border-0"
-            >Submit</button>
+            <button className="btn w-full mb-2 bg-gradient-to-r from-primary to-secondary text-white border-0">
+              Submit
+            </button>
           </form>
         </div>
       </div>

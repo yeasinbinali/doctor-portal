@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
 import toast from "react-hot-toast";
-import useToken from '../../hooks/useToken';
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const {
@@ -15,16 +15,16 @@ const Login = () => {
   const { loginUser, signInWithGoogle } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
 
-  const [loginUserEmail, setLoginUserEmail] = useState('');
+  const [loginUserEmail, setLoginUserEmail] = useState("");
   const [token] = useToken(loginUserEmail);
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  const from = location.state?.from?.pathName || '/';
+  const from = location.state?.from?.pathName || "/";
 
-  if(token){
-    navigate(from, {replace: true});
+  if (token) {
+    navigate(from, { replace: true });
     toast.success("Login successfully");
   }
 
@@ -37,7 +37,7 @@ const Login = () => {
         console.log(user);
         setLoginError("");
         form.reset();
-        setLoginUserEmail(data.email);        
+        setLoginUserEmail(data.email);
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -47,17 +47,17 @@ const Login = () => {
 
   const handleGoogle = () => {
     signInWithGoogle()
-    .then(result => {
-      const user = result.user;
-      console.log(user);
-      saveUser(user.displayName, user.email);
-    })
-    .catch(error => console.error(error))
-  }
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        saveUser(user.displayName, user.email);
+      })
+      .catch((error) => console.error(error));
+  };
 
   const saveUser = (name, email) => {
     const user = { name, email };
-    fetch(`http://localhost:5000/users`, {
+    fetch(`https://doctor-portal-server-gamma-five.vercel.app/users`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -116,7 +116,10 @@ const Login = () => {
               <span className="label-text">Forget Password?</span>
             </label>
           </div>
-          <input className="btn btn-accent w-full text-white create-btn" type="submit" />
+          <input
+            className="btn btn-accent w-full text-white create-btn"
+            type="submit"
+          />
           {loginError && (
             <p className="text-red-600 text-center">{loginError}</p>
           )}
@@ -128,7 +131,12 @@ const Login = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button onClick={handleGoogle} className="btn btn-outline w-full google-btn">CONTINUE WITH GOOGLE</button>
+        <button
+          onClick={handleGoogle}
+          className="btn btn-outline w-full google-btn"
+        >
+          CONTINUE WITH GOOGLE
+        </button>
       </div>
     </div>
   );

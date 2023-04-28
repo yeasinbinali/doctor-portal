@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/UserContext";
 import toast from "react-hot-toast";
-import useToken from '../../hooks/useToken';
+import useToken from "../../hooks/useToken";
 
 const Signup = () => {
   const {
@@ -13,14 +13,14 @@ const Signup = () => {
   } = useForm();
   const { createUser, updateUser } = useContext(AuthContext);
   const [signupError, setSignupError] = useState("");
-  const [createUserEmail, setCreateUserEmail] = useState('');
+  const [createUserEmail, setCreateUserEmail] = useState("");
 
   const [token] = useToken(createUserEmail);
   const navigate = useNavigate();
 
-  if(token){
-    navigate('/');
-    toast.success('User create successfully');
+  if (token) {
+    navigate("/");
+    toast.success("User create successfully");
   }
 
   const handleSignup = (data, event) => {
@@ -49,7 +49,7 @@ const Signup = () => {
 
   const saveUser = (name, email) => {
     const user = { name, email };
-    fetch(`http://localhost:5000/users`, {
+    fetch(`https://doctor-portal-server-gamma-five.vercel.app/users`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -5,7 +5,7 @@ const About = () => {
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/doctors")
+    fetch("https://doctor-portal-server-gamma-five.vercel.app/doctors")
       .then((res) => res.json())
       .then((data) => setDoctors(data));
   }, []);

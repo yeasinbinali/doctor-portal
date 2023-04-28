@@ -10,11 +10,13 @@ import PrimaryButton from "../../button/PrimaryButton";
 import { AuthContext } from "../../contexts/UserContext";
 
 const Reviews = () => {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { data: reviews } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/reviews");
+      const res = await fetch(
+        "https://doctor-portal-server-gamma-five.vercel.app/reviews"
+      );
       const data = await res.json();
       return data;
     },
@@ -57,13 +59,16 @@ const Reviews = () => {
           <Review key={review._id} review={review}></Review>
         ))}
       </div>
-      <div className='text-center'>
-        {
-          user && user.uid ?
-          <PrimaryButton><Link to='/yourReview'>Your Reviews</Link></PrimaryButton>
-          : 
-          <PrimaryButton><Link to='/login'>Your Reviews</Link></PrimaryButton>
-        }
+      <div className="text-center">
+        {user && user.uid ? (
+          <PrimaryButton>
+            <Link to="/yourReview">Your Reviews</Link>
+          </PrimaryButton>
+        ) : (
+          <PrimaryButton>
+            <Link to="/login">Your Reviews</Link>
+          </PrimaryButton>
+        )}
       </div>
     </div>
   );

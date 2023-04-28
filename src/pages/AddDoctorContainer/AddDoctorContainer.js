@@ -18,7 +18,9 @@ const AddDoctorContainer = () => {
   const { data: specialties, isLoading } = useQuery({
     queryKey: ["specialty"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/appointmentSpecialty");
+      const res = await fetch(
+        "https://doctor-portal-server-gamma-five.vercel.app/appointmentSpecialty"
+      );
       const data = await res.json();
       return data;
     },
@@ -28,40 +30,40 @@ const AddDoctorContainer = () => {
     const form = event.target;
     const image = data.image[0];
     const formData = new FormData();
-    formData.append('image', image);
+    formData.append("image", image);
 
     const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`;
     fetch(url, {
-      method: 'POST',
-      body: formData
+      method: "POST",
+      body: formData,
     })
-    .then(res => res.json())
-    .then(imgData => {
-      if(imgData.success){
-        const doctor = {
-          name: data.name,
-          email: data.email,
-          specialty: data.specialty,
-          image: imgData.data.url
+      .then((res) => res.json())
+      .then((imgData) => {
+        if (imgData.success) {
+          const doctor = {
+            name: data.name,
+            email: data.email,
+            specialty: data.specialty,
+            image: imgData.data.url,
+          };
+
+          fetch("https://doctor-portal-server-gamma-five.vercel.app/doctors", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(doctor),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              if (result.acknowledged) {
+                toast.success(`Doctor ${data.name} successfully added`);
+                navigate("/about");
+              }
+            });
         }
-        
-        fetch('http://localhost:5000/doctors', {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-            authorization: `bearer ${localStorage.getItem('accessToken')}`
-          },
-          body: JSON.stringify(doctor)
-        })
-        .then(res => res.json())
-        .then(result => {
-          if(result.acknowledged){
-            toast.success(`Doctor ${data.name} successfully added`);
-            navigate('/about');
-          }
-        });
-      }
-    })
+      });
     form.reset();
   };
 
@@ -114,8 +116,9 @@ const AddDoctorContainer = () => {
             <span className="label-text">Specialty</span>
           </label>
           <select
-          {...register('specialty')}
-          className="select input-bordered w-full max-w-xs">
+            {...register("specialty")}
+            className="select input-bordered w-full max-w-xs"
+          >
             {specialties &&
               specialties.map((specialty) => (
                 <option key={specialty._id} value={specialty.name}>

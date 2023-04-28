@@ -1,21 +1,23 @@
 import format from "date-fns/format";
-import {useQuery} from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import BookingAppointment from "../BookingAppointment/BookingAppointment";
 import SingleAppointment from "../SingleAppointment/SingleAppointment";
 
 const AvailableAppointment = ({ selected }) => {
-  const date = format(selected, 'PP');
+  const date = format(selected, "PP");
   const [treatment, setTreatment] = useState(null);
 
-  const {data: availableAppointments = [], refetch} = useQuery({
-    queryKey: ['appointmentOptions', date],
-    queryFn: async() => {
-      const res = await fetch(`http://localhost:5000/appointmentOptions?date=${date}`);
+  const { data: availableAppointments = [], refetch } = useQuery({
+    queryKey: ["appointmentOptions", date],
+    queryFn: async () => {
+      const res = await fetch(
+        `https://doctor-portal-server-gamma-five.vercel.app/appointmentOptions?date=${date}`
+      );
       const data = await res.json();
       return data;
-    }
-  })
+    },
+  });
 
   return (
     <div>

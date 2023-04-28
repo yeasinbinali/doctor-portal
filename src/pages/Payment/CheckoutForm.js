@@ -17,14 +17,17 @@ const CheckoutForm = ({ booking }) => {
   const elements = useElements();
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({ price }),
-    })
+    fetch(
+      "https://doctor-portal-server-gamma-five.vercel.app/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ price }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [price]);
@@ -78,42 +81,41 @@ const CheckoutForm = ({ booking }) => {
         transactionId: paymentIntent.id,
         bookingId: _id,
         patientName,
-        email
-      }
+        email,
+      };
 
-      fetch('http://localhost:5000/payment', {
-        method: 'POST',
+      fetch("https://doctor-portal-server-gamma-five.vercel.app/payment", {
+        method: "POST",
         headers: {
-          'content-type': 'application/json',
-          authorization: `bearer ${localStorage.getItem('accessToken')}`
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
-        body: JSON.stringify(payment)
+        body: JSON.stringify(payment),
       })
-      .then(res => res.json())
-      .then(data => {
-        if(data.insertedId){
-          setSuccess("Congrats! You paid the money.");
-          setTransactionId(paymentIntent.id);
-          navigate("/dashboard");
-        }
-      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            setSuccess("Congrats! You paid the money.");
+            setTransactionId(paymentIntent.id);
+            navigate("/dashboard");
+          }
+        });
     }
     setProcessing(false);
-
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         <CardElement
-          className='border-2 p-2'
+          className="border-2 p-2"
           options={{
             style: {
               base: {
                 fontSize: "16px",
                 color: "#424770",
                 "::placeholder": {
-                  color: "#aab7c4"
+                  color: "#aab7c4",
                 },
               },
               invalid: {
@@ -132,9 +134,11 @@ const CheckoutForm = ({ booking }) => {
       </form>
       <p className="text-red-600">{cardError}</p>
       {success && (
-        <div className='w-full'>
+        <div className="w-full">
           <p className="text-green-600">{success}</p>
-          <small className='font-bold'>Your transactionId: {transactionId}</small>
+          <small className="font-bold">
+            Your transactionId: {transactionId}
+          </small>
         </div>
       )}
     </>

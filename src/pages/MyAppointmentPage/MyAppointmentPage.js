@@ -7,7 +7,7 @@ const MyAppointmentPage = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
 
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  const url = `https://doctor-portal-server-gamma-five.vercel.app/bookings?email=${user?.email}`;
 
   const { data: bookings = [] } = useQuery({
     queryKey: ["bookings", user?.email],
@@ -47,14 +47,14 @@ const MyAppointmentPage = () => {
                   <td>{booking.slot}</td>
                   <td>{booking.appointmentDate}</td>
                   <td>
-                    {
-                      booking.price && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}><button className='btn btn-primary'>
-                        Pay
-                      </button></Link>
-                    }
-                    {
-                      booking.paid && <span className='text-green-600'>Paid</span>
-                    }
+                    {booking.price && !booking.paid && (
+                      <Link to={`/dashboard/payment/${booking._id}`}>
+                        <button className="btn btn-primary">Pay</button>
+                      </Link>
+                    )}
+                    {booking.paid && (
+                      <span className="text-green-600">Paid</span>
+                    )}
                   </td>
                 </tr>
               ))}

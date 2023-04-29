@@ -64,7 +64,7 @@ const Signup = () => {
 
   return (
     <div className="container text-center">
-      <div className="w-96 mx-auto my-5 p-7">
+      <div className="md:w-96 mx-auto my-5 p-7">
         <h2 className="text-xl">Signup</h2>
         <form onSubmit={handleSubmit(handleSignup)}>
           <div className="form-control w-full mx-auto">

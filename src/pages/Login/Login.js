@@ -72,7 +72,7 @@ const Login = () => {
 
   return (
     <div className="container">
-      <div className="w-96 mx-auto my-5 p-7">
+      <div className="md:w-96 mx-auto my-5 p-7">
         <h2 className="text-xl text-center">Login</h2>
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control w-full mx-auto">

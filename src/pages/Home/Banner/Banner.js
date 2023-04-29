@@ -22,7 +22,7 @@ const Banner = () => {
               typeSpeed={150}
               deleteSpeed={100}
               delaySpeed={1000}
-            />
+            />|
           </h1>
           <p className="py-6 md:pr-5 text-justify">
             A doctors portal is a health care institution providing patient treatment

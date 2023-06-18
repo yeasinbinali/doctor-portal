@@ -12,7 +12,8 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-  const { loginUser, signInWithGoogle } = useContext(AuthContext);
+  // signInWithGoogle
+  const { loginUser } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
 
   const [loginUserEmail, setLoginUserEmail] = useState("");
@@ -45,30 +46,30 @@ const Login = () => {
       });
   };
 
-  const handleGoogle = () => {
-    signInWithGoogle()
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        saveUser(user.displayName, user.email);
-      })
-      .catch((error) => console.error(error));
-  };
+  // const handleGoogle = () => {
+  //   signInWithGoogle()
+  //     .then((result) => {
+  //       const user = result.user;
+  //       console.log(user);
+  //       saveUser(user.displayName, user.email);
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
 
-  const saveUser = (name, email) => {
-    const user = { name, email };
-    fetch(`https://doctor-portal-server-gamma-five.vercel.app/users`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setLoginUserEmail(email);
-      });
-  };
+  // const saveUser = (name, email) => {
+  //   const user = { name, email };
+  //   fetch(`https://doctor-portal-server-gamma-five.vercel.app/users`, {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(user),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setLoginUserEmail(email);
+  //     });
+  // };
 
   return (
     <div className="container">
@@ -130,13 +131,13 @@ const Login = () => {
             Create an account
           </Link>
         </p>
-        <div className="divider">OR</div>
+        {/* <div className="divider">OR</div>
         <button
           onClick={handleGoogle}
           className="btn btn-outline w-full google-btn"
         >
           CONTINUE WITH GOOGLE
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import React from "react";
 const Review = ({ review }) => {
   const { name, address, message, image } = review;
   return (
-    <div className="border p-5 rounded">
+    <div className="flex flex-col justify-between border p-5 rounded">
       <div>
         <p className="text-justify">❝{message}❞</p>
       </div>
